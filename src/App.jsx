@@ -1,9 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decrement,
+  increment,
+  incrementby,
+} from "./store/slices/counter/CounterSlice";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { counter } = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
+  const onIncrement = () => {
+    dispatch(increment());
+  };
+  const onDecrement = () => {
+    dispatch(decrement());
+  };
+  const onIncrementby = () => {
+    dispatch(incrementby(2));
+  };
 
   return (
     <div className="App">
@@ -15,11 +31,12 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>count is {counter}</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <button onClick={onIncrement}>Increment</button>
+        <button onClick={onDecrement}>Decrement</button>
+        <button onClick={onIncrementby}>Increment by 2</button>
+
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
@@ -28,7 +45,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

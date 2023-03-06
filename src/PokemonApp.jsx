@@ -22,15 +22,14 @@ export const PokemonApp = () => {
     <>
       <div>PokemonApp</div>
       <hr />
-      {isLoading ? (
-        "Cargando..."
-      ) : (
-        <ul>
-          {pokemon.map((poke) => (
-            <li key={poke.name}>{poke.name}</li>
-          ))}
-        </ul>
-      )}
+      {isLoading && "Cargando..."}
+
+      <ul>
+        {pokemon.map((poke) => (
+          <li key={poke}>{poke}</li>
+        ))}
+      </ul>
+
       <div>
         <button disabled={isLoading} onClick={onBackPokemons}>
           back

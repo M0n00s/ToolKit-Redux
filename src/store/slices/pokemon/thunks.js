@@ -11,7 +11,7 @@ export const getPokemons = (page = 0) => {
 
     dispatch(
       setPokemon({
-        pokemon: data.results,
+        pokemon: data.results.map((poke) => poke.name),
         page: page,
       })
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link, NavLink } from "react-router-dom";
+import { Routes, Route, Link, NavLink, Navigate } from "react-router-dom";
 import { App } from "../App";
 import { PokemonApp } from "../PokemonApp";
 
@@ -24,6 +24,8 @@ export const RouterApp = () => {
         <Routes>
           <Route path="/counter" element={<App />} />
           <Route path="/pokeapi" element={<PokemonApp />} />
+
+          <Route path="/*" element={<Navigate to="/counter" />} />
         </Routes>
       </div>
     </div>
